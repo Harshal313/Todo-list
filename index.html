@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        .done{
+            text-decoration: line-through;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <div class="container">
+        Enter Task : <input type="text" id="ip" required>
+        <hr>
+        <div >
+            Your tasks :-
+            <ol id="list">
+                
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let write = document.getElementById("ip");
+        let todo = document.getElementById("list");
+
+        write.addEventListener("keyup", function(e){
+            if(e.key == "Enter"){
+                if(e.key != '')
+                    addTodo(this.value);
+                this.value='';
+            }
+        })
+
+        function addTodo(val){
+            let list = document.createElement("li");
+            list.innerHTML = `${val}`;
+            todo.appendChild(list);
+
+            list.addEventListener("click", function(){
+                this.classList.toggle('done')
+                
+            })
+            
+        }
+    </script>
+</body>
+</html>
